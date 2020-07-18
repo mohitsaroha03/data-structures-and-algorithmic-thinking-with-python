@@ -153,75 +153,75 @@ class LinkedList:
                     current = current.get_next()
                      
         current.set_next(endnodePointer)
-         
-    def detectCycle(self):
-        hare = self.head
-        tortoise = self.head
-         
-        while (hare and tortoise):
-            hare = hare.get_next()
-            if (hare == tortoise):
-                return True
-             
-            if hare == None:
-                return False
-             
-            hare = hare.get_next()
-            if (hare == tortoise):
-                return True
-             
-            tortoise = tortoise.get_next()
-    
+
+	def detectCycle(self):
+		hare = self.head
+		tortoise = self.head
+
+		while (hare and tortoise):
+			hare = hare.get_next()
+			if (hare == tortoise):
+				return True
+
+			if hare == None:
+				return False
+
+			hare = hare.get_next()
+			if (hare == tortoise):
+				return True
+
+			tortoise = tortoise.get_next()
+
 	def detectCycleStart(self) :
-	    if None == self.head or None == self.head.next:
-	      return None
-	 
-	    # slow and fast both started at head after one step,
-	    # slow is at self.head.next and fast is at self.head.next.next
-	    slow = self.head.next
-	    fast = slow.next
-	    # each keep walking until they meet again.
-	    while slow != fast:
-	      slow = slow.next
-	      try:
+		if None == self.head or None == self.head.next:
+		  return None
+
+		# slow and fast both started at head after one step,
+		# slow is at self.head.next and fast is at self.head.next.next
+		slow = self.head.next
+		fast = slow.next
+		# each keep walking until they meet again.
+		while slow != fast:
+		  slow = slow.next
+		  try:
 		fast = fast.next.next
-	      except AttributeError:
+		  except AttributeError:
 		return None  # no cycle if NoneType reached
-	 
-	    # from self.head to beginning of loop is same as from fast to
-	    # beginning of loop
-	    slow = self.head
-	    while slow != fast:
-	      slow = slow.next
-	      fast = fast.next
-	 
-	    return slow  # beginning of loop
-    
+
+		# from self.head to beginning of loop is same as from fast to
+		# beginning of loop
+		slow = self.head
+		while slow != fast:
+		  slow = slow.next
+		  fast = fast.next
+
+		return slow  # beginning of loop
+
 	def fndLoopLength(self) :
-	    if None == self.head or None == self.head.next:
-	      return 0
-	 
-	    # slow and fast both started at head after one step,
-	    # slow is at self.head.next and fast is at self.head.next.next
-	    slow = self.head.next
-	    fast = slow.next
-	    # each keep walking until they meet again.
-	    while slow != fast:
-	      slow = slow.next
-	      try:
-	        fast = fast.next.next
-	      except AttributeError:
-	        return 0  # no cycle if NoneType reached
-	 
-	    loopLength = 0	
-	    slow = slow.next
-	    while slow != fast:
-	      slow = slow.next
-	      loopLength = loopLength + 1    
-	    
-	    return loopLength          
-         
-         
+		if None == self.head or None == self.head.next:
+		  return 0
+
+		# slow and fast both started at head after one step,
+		# slow is at self.head.next and fast is at self.head.next.next
+		slow = self.head.next
+		fast = slow.next
+		# each keep walking until they meet again.
+		while slow != fast:
+		  slow = slow.next
+		  try:
+			fast = fast.next.next
+		  except AttributeError:
+			return 0  # no cycle if NoneType reached
+
+		loopLength = 0	
+		slow = slow.next
+		while slow != fast:
+		  slow = slow.next
+		  loopLength = loopLength + 1    
+
+		return loopLength          
+
+
 if __name__ == "__main__":
     linkedlst = LinkedList()
     linkedlst.insertAtBeg(1)
